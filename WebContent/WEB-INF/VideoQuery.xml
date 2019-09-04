@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Querys>
+
+	<!-- Create table video Query -->
+	<query id="create_video_table">
+        <![CDATA[
+            CREATE TABLE video(
+				videoId varchar(10) not null,
+				videoTitle varchar(50) not null,
+				Category varchar(30),
+				runningTime varchar(20),
+				Language varchar(30),
+				UploadDate varchar(20),
+				videoDescription varchar(250),
+				primary key (videoId)
+			)
+        ]]>
+	</query>
+
+	<!-- DROP TABLE video Query -->
+	<query id="drop_table">
+         <![CDATA[        
+            DROP TABLE IF EXISTS video 
+        ]]>
+	</query>
+
+	<!-- Select all video orders Query -->
+	<query id="insert_video">
+        <![CDATA[
+          	insert into video(videoId, videoTitle, Category,runningTime, Language, UploadDate, videoDescription) 
+          	values (?, ?, ?, ?, ?, ?, ?)
+        ]]>
+	</query>
+
+	<!-- Select a particular video by id Query -->
+	<query id="video_by_id">
+         <![CDATA[        
+            select * from video where video.videoId = ?
+        ]]>
+	</query>
+
+	<!-- Select all videos-->
+	<query id="all_video">
+         <![CDATA[        
+            select * from video
+        ]]>
+	</query>
+
+	<!-- Delete a particular video by id Query -->
+	<query id="remove_video">
+         <![CDATA[        
+            delete from video where video.videoId = ?
+        ]]>
+	</query>
+	
+	<!-- Update a particular video by id Query -->
+	<query id="update_video">
+         <![CDATA[        
+            update video as v 
+            set v.videoTitle = ?, v.Category = ?, v.runningTime = ?, v.Language = ?, v.UploadDate = ?, v.videoDescription = ? 
+            where v.videoId = ?
+        ]]>
+	</query>
+	
+		<!-- Get video IDs Query -->
+	<query id="video_ids">
+         <![CDATA[        
+            select v.videoId from video as v
+        ]]>
+	</query>
+
+</Querys>
